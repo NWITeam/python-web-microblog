@@ -32,7 +32,7 @@ def create_app():
         #[print("MongoDB Collection" , entry) 
         for entry in app.db.entries.find({})
       ]
-      
-    return render_template("home.html", entries=entries_with_date)
+    with app.app_context:  
+      return render_template("home.html", entries=entries_with_date)
     #return render_template("home.html", entries=app.db.entries.find({}))
   return app 
